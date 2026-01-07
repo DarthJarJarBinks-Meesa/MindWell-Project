@@ -22,6 +22,7 @@ import Hackathon from "@/pages/Hackathon";
 import Resources from "@/pages/Resources";
 import About from "@/pages/About";
 import KeyPapers from "@/pages/KeyPapers";
+import BrainMap from "@/pages/BrainMap";
 
 function Router() {
   return (
@@ -44,6 +45,7 @@ function Router() {
         <Route path="/resources" component={Resources} />
         <Route path="/about" component={About} />
         <Route path="/key-papers" component={KeyPapers} />
+        <Route path="/brain-map" component={BrainMap} />
         
         <Route component={NotFound} />
       </Switch>
