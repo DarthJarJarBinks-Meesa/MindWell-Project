@@ -12,7 +12,6 @@ const navItems = [
   { label: "Neurodegeneration", href: "/neurodegeneration" },
   { label: "TBI", href: "/tbi" },
   { label: "Prevention", href: "/prevention" },
-  { label: "Brain Map", href: "/brain-map" },
   { label: "Key Papers", href: "/key-papers" },
   { label: "What We Do", href: "/what-we-do" },
   { label: "Daily Puzzle", href: "/daily-puzzle" },
