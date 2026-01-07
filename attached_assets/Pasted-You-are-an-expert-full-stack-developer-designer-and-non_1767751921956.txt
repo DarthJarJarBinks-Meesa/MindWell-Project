@@ -1,0 +1,195 @@
+You are an expert full-stack developer, designer, and nonprofit UX writer. Build a fully functioning modern website + lightweight brand kit (logo) for a nonprofit called “The MindWell Project” focused on:
+
+• Neurodegenerative diseases (e.g., dementia, Alzheimer’s, Parkinson’s, etc.)
+• Traumatic Brain Injury (TBI)
+
+These are distinct conditions, but the site must clearly explain their biological overlap, long-term risks, and why both require prevention-focused public awareness.
+
+PRIMARY GOAL
+Deliver a production-quality, responsive website that feels calm, credible, science-grounded, and hopeful (not fear-based). Treat neurodegenerative disease and TBI as related but separate focus areas.
+
+TECH STACK (REQUIRED)
+- Next.js 14+ (App Router)
+- TypeScript
+- Tailwind CSS
+- shadcn/ui
+- lucide-react icons
+- Use server components where appropriate
+- No broken external image links; use local SVGs/placeholder images
+- SEO metadata, OpenGraph, sitemap
+- Accessibility-first design
+
+BRANDING (REQUIRED)
+Create a professional nonprofit brand:
+- Name: The MindWell Project
+- Positioning: lifelong brain health, prevention, dignity, evidence-based education
+- Logo:
+  1) Primary logo SVG
+  2) Icon-only SVG
+  3) Favicon
+- Style: modern, calm, healthcare-adjacent (no aggressive medical imagery)
+- Include brand colors + typography in README
+
+GLOBAL UI
+- Sticky navbar with:
+  Home | Why | Neurodegeneration | TBI | Prevention | What We Do | Get Involved | Daily Puzzle | Research | Grants | Fellowship | Hackathon | Resources | Donate | Contact
+- Prominent Donate button
+- Footer with mission summary, email (neurodegenerative.awareness@gmail.com), and disclaimer:
+  “Educational content only; not medical advice.”
+
+CONTENT RULES
+- Do not claim cures
+- Use “risk reduction” and “long-term outcomes” language
+- Clearly distinguish neurodegenerative disease vs TBI everywhere
+- Explain where they intersect (inflammation, tau, vascular injury) without conflating them
+
+PAGES & FEATURES
+
+1) Home (/)
+- Hero: “Protect brain health across a lifetime.”
+- Subtext: Awareness and prevention for neurodegenerative disease and traumatic brain injury
+- CTAs: Learn Prevention | Get Involved | Donate
+- Impact snapshot cards (clearly labeled as targets if aspirational):
+  • 100,000+ cognitive puzzles distributed
+  • 100+ community locations reached
+  • Awareness & education sessions nationwide
+- “What We Do” cards:
+  a) Neurodegenerative Disease Awareness
+  b) TBI Awareness & Prevention
+  c) Brain-Boost Puzzle Outreach
+  d) Community Education & Advocacy
+  e) Research Translation
+- “Today’s Puzzle” preview widget
+- “Latest Research Highlights” preview
+
+2) Why This Matters (/why)
+- Explain the rise of:
+  • Neurodegenerative diseases (aging, vascular risk, inflammation)
+  • TBI (falls, sports, military, motor vehicle injuries)
+- Include a section: “Why TBI Is Not Neurodegenerative — but Still Matters Long-Term”
+- Local SVG charts with high-level statistics (clearly labeled as estimates)
+- 3–5 educational illustrations (brain aging, neuron health, fall prevention, helmet safety, caregiver support)
+
+3) Neurodegenerative Disease (/neurodegeneration)
+- Define neurodegenerative diseases
+- Focus on dementia, Alzheimer’s, Parkinson’s
+- Explain progression, early signs, societal impact
+- Include prevention-oriented messaging
+- No medical claims
+
+4) Traumatic Brain Injury (/tbi)
+- Define TBI and severity spectrum
+- Common causes
+- Long-term cognitive and neurological consequences
+- Relationship to later-life cognitive decline (without calling TBI neurodegenerative)
+- Prevention + recovery principles
+
+5) Prevention (/prevention)
+- Brain health foundations
+- Dementia risk reduction
+- TBI prevention (falls, sports, workplace)
+- After injury guidance (red flags + clinician-following disclaimer)
+- Checklists + downloadable placeholders
+
+6) What We Do (/what-we-do)
+- Puzzle outreach:
+  • Send 100,000+ sudoku, crossword, logic puzzles
+  • Distribute to 100+ locations serving at-risk populations
+- Awareness sessions
+- Fundraising
+- Social media campaigns
+- Collaboration with educators, caregivers, and clinicians
+
+7) Get Involved (/get-involved)
+- Volunteer roles
+- Partnerships
+- Email CTA: neurodegenerative.awareness@gmail.com
+- Interest form (local storage)
+
+8) About Us (/about)
+- Mission, values, story
+- Team placeholders
+- Advisory board
+- Financial transparency visuals
+
+9) Daily Puzzle (/daily-puzzle)
+FULLY FUNCTIONAL
+- Puzzle of the day (seeded by date):
+  • Sudoku (easy)
+  • Word search
+  • Mini crossword
+- Print + PDF-friendly layout
+- Answer reveal
+- Streak stored in localStorage
+
+10) Research (/research)
+- “Recent Groundbreaking Research”
+- Curated entries from local JSON
+- Filter by tags: Neurodegeneration, Dementia, TBI, Prevention, Caregiving
+- Clear update instructions in README
+
+11) Resources (/resources)
+- External organization directory:
+  • Dementia organizations
+  • TBI organizations
+  • Caregiver support
+- Cards with description + external link
+- Disclaimer for external content
+
+12) Donate (/donate)
+- Donation tiers
+- Where funds go
+- Placeholder Stripe/PayPal UI
+- Email fallback
+
+13) Contact (/contact)
+- Contact form with validation
+- Email display
+- Save submissions locally or mock endpoint
+
+14) Grants (/grants)
+- Grant listings (from local JSON)
+- Partner info
+- How grants are used
+
+15) Fellowship (/fellowship)
+- The MindWell Fellowship
+- Timeline:
+  • Opens March 1
+  • Closes May 1
+- Disabled Apply button until March 1 (date-based)
+- FAQ section
+
+16) Medical Hackathon (/hackathon)
+- MindWell Medical Hackathon
+- Focus areas:
+  • Brain health education tools
+  • Games for cognitive engagement
+  • Caregiver support tools
+  • TBI education tools
+  • Prototype “Dementia Risk Index” (clearly labeled as non-diagnostic)
+- Registration interest form
+- Project gallery (empty state)
+- Sponsor placeholders
+
+EXTRAS
+- Client-side search (research + resources)
+- Share buttons
+- Analytics TODO placeholder
+
+FILE STRUCTURE
+- /app
+- /components
+- /data (research.json, grants.json, resources.json)
+- /lib (puzzle logic)
+- /public (logos, SVGs)
+
+DELIVERABLES
+- Fully working site in Replit
+- README with setup + update instructions
+- No broken pages, missing routes, or dead buttons
+- Polished, nonprofit-grade UI/UX
+
+IMPORTANT
+Do not conflate TBI with neurodegenerative disease. Treat them as distinct, with a clearly explained connection where relevant.
+Generate the project now.
