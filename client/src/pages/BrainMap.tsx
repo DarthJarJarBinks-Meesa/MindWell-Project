@@ -9,6 +9,7 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import { cn } from "@/lib/utils";
+import { Search } from "lucide-react";
 
 interface BrainRegion {
   id: string;
