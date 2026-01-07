@@ -6,7 +6,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { ScrollArea } from "@/components/ui/scroll-area";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Search, RotateCcw, Info, AlertCircle, Brain } from "lucide-react";
+import { Search, RotateCcw, Info, AlertCircle, Brain, ExternalLink } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 // BRAIN REGIONS DATA
@@ -38,8 +38,11 @@ const BRAIN_REGIONS: Record<string, { description: string; tip?: string }> = {
   }
 };
 
-function Model({ url, onSelect, selectedName }: { url: string; onSelect: (name: string) => void; selectedName: string | null }) {
-  const { scene } = useGLTF(url);
+function Model({ url, onSelect, selectedName, setLoadError }: { url: string; onSelect: (name: string) => void; selectedName: string | null; setLoadError: (err: boolean) => void }) {
+  const { scene } = useGLTF(url, undefined, (err) => {
+    console.error("GLTF Load Error:", err);
+    setLoadError(true);
+  });
   const [hovered, setHovered] = useState<string | null>(null);
 
   return (
@@ -116,45 +119,52 @@ export default function BrainMap() {
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 h-[700px]">
         {/* Left: 3D Canvas */}
         <div className="lg:col-span-2 bg-muted/20 rounded-xl relative border overflow-hidden">
-          <Suspense fallback={
-            <div className="absolute inset-0 flex items-center justify-center bg-muted/10 backdrop-blur-sm z-10">
-              <div className="text-center space-y-4">
-                <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-primary mx-auto"></div>
-                <p className="text-primary font-medium">Loading 3D brain...</p>
+          {!loadError ? (
+            <Suspense fallback={
+              <div className="absolute inset-0 flex items-center justify-center bg-muted/10 backdrop-blur-sm z-10">
+                <div className="text-center space-y-4">
+                  <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-primary mx-auto"></div>
+                  <p className="text-primary font-medium">Loading 3D brain...</p>
+                </div>
+              </div>
+            }>
+              <Canvas camera={{ position: [0, 0, 5], fov: 45 }}>
+                <ambientLight intensity={0.5} />
+                <pointLight position={[10, 10, 10]} intensity={1} />
+                <spotLight position={[-10, 10, 10]} angle={0.15} penumbra={1} />
+                <Stage environment="city" intensity={0.6} contactShadow={false}>
+                  <Model 
+                    url="/assets/brain_segmented.glb" 
+                    onSelect={handleSelect}
+                    selectedName={selectedRegion}
+                    setLoadError={setLoadError}
+                  />
+                </Stage>
+                <OrbitControls ref={controlsRef} makeDefault />
+              </Canvas>
+            </Suspense>
+          ) : null}
+
+          {/* Missing File Notice & 3D Viewport Placeholder */}
+          {(loadError || true) && (
+            <div className={cn(
+              "absolute inset-0 flex items-center justify-center p-8 text-center bg-muted/5 z-0",
+              loadError && "z-20 pointer-events-auto bg-muted/10 backdrop-blur-sm"
+            )}>
+            <div className="space-y-4 max-w-md pointer-events-auto bg-white/80 backdrop-blur p-6 rounded-xl border-2 border-dashed border-primary/20">
+              <Brain className="h-12 w-12 text-primary mx-auto opacity-50" />
+              <h3 className="font-bold text-lg text-primary">3D Asset Missing</h3>
+              <p className="text-sm text-muted-foreground">
+                To enable the interactive 3D brain, please place your <b>brain_segmented.glb</b> file in:
+                <br />
+                <code className="bg-muted px-1 py-0.5 rounded text-xs">client/public/assets/brain_segmented.glb</code>
+              </p>
+              <div className="pt-2">
+                <Button variant="outline" size="sm" onClick={() => window.open('https://github.com/pmndrs/drei-assets/blob/master/brain.glb', '_blank')}>
+                  <ExternalLink className="h-4 w-4 mr-2" /> View Example Asset
+                </Button>
               </div>
             </div>
-          }>
-            <Canvas camera={{ position: [0, 0, 5], fov: 45 }}>
-              <ambientLight intensity={0.5} />
-              <pointLight position={[10, 10, 10]} intensity={1} />
-              <spotLight position={[-10, 10, 10]} angle={0.15} penumbra={1} />
-              <Stage environment="city" intensity={0.6} contactShadow={false}>
-                <Model 
-                  url="/assets/brain_segmented.glb" 
-                  onSelect={handleSelect}
-                  selectedName={selectedRegion}
-                />
-              </Stage>
-              <OrbitControls ref={controlsRef} makeDefault />
-            </Canvas>
-          </Suspense>
-
-          <div className="absolute bottom-4 left-4 z-10">
-            <Button variant="secondary" size="sm" onClick={resetView} className="shadow-lg">
-              <RotateCcw className="h-4 w-4 mr-2" /> Reset View
-            </Button>
-          </div>
-
-          <div className="absolute top-4 left-4 z-10 bg-white/80 backdrop-blur p-2 rounded-lg border shadow-sm text-[10px] text-muted-foreground max-w-[200px]">
-            <p>Note: Segmented GLB required. Mesh names must match region database. This is a conceptual tool and not for medical diagnosis.</p>
-          </div>
-          
-          {/* Missing File Notice */}
-          <div className="absolute inset-0 flex items-center justify-center pointer-events-none p-8 text-center opacity-40">
-            <p className="text-sm border-2 border-dashed border-primary/20 p-4 rounded-lg">
-              [3D Viewport] <br/>
-              Ensure /public/assets/brain_segmented.glb exists for production visualization.
-            </p>
           </div>
         </div>
 
