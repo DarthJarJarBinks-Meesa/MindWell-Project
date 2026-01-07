@@ -21,6 +21,7 @@ import Fellowship from "@/pages/Fellowship";
 import Hackathon from "@/pages/Hackathon";
 import Resources from "@/pages/Resources";
 import About from "@/pages/About";
+import KeyPapers from "@/pages/KeyPapers";
 
 function Router() {
   return (
@@ -42,6 +43,7 @@ function Router() {
         <Route path="/hackathon" component={Hackathon} />
         <Route path="/resources" component={Resources} />
         <Route path="/about" component={About} />
+        <Route path="/key-papers" component={KeyPapers} />
         
         <Route component={NotFound} />
       </Switch>
