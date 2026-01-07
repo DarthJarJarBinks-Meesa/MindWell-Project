@@ -2,7 +2,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { useToast } from "@/hooks/use-toast";
-import { Mail, MapPin, Phone } from "lucide-react";
+import { Mail } from "lucide-react";
 import { useState } from "react";
 
 export default function Contact() {
@@ -41,18 +41,6 @@ export default function Contact() {
                 <h3 className="font-semibold text-primary">Email Us</h3>
                 <p className="text-muted-foreground">neurodegenerative.awareness@gmail.com</p>
                 <p className="text-xs text-muted-foreground mt-1">General inquiries & partnerships</p>
-              </div>
-            </div>
-            
-            <div className="flex items-start gap-4">
-              <MapPin className="h-6 w-6 text-accent shrink-0 mt-1" />
-              <div>
-                <h3 className="font-semibold text-primary">Mailing Address</h3>
-                <p className="text-muted-foreground">
-                  The MindWell Project<br />
-                  123 Innovation Drive, Suite 400<br />
-                  San Francisco, CA 94103
-                </p>
               </div>
             </div>
           </div>
